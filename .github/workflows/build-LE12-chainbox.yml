@@ -62,10 +62,11 @@ jobs:
   RK3328_L1-12_0:
     name: "RK3328.L1 12.0"
     # Only run if there has been a commit in the last 24 hours
-    needs: check_date
+    # needs: check_date
     if: |
-      ( needs.check_date.outputs.should_run != 'false' )
-        && ( github.event.inputs.target == 'all' || github.event.inputs.target == 'RK3328.aarch64' || github.event_name == 'schedule' )
+      github.event.inputs.target == 'RK3328.L1'
+      # ( needs.check_date.outputs.should_run != 'false' )
+       # && ( github.event.inputs.target == 'all' || github.event.inputs.target == 'RK3328.L1' || github.event_name == 'schedule' )
     uses: ./.github/workflows/yml-uses-make-image-LE12-chainbox.yml
     with:
       clean_le: no_clean_le
