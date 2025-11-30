@@ -95,9 +95,12 @@ concurrency:
 
 jobs:
   build_image:
-    runs-on: [self-hosted, nightly]
+    runs-on: ubuntu-latest
+    # runs-on: [self-hosted, nightly]
 
-    timeout-minutes: 720
+    timeout-minutes: 360
+    env:
+      LARGE_DISK: "true" 
 
     steps:
       - uses: actions/checkout@v5
